@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/css/js/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="../static/css/index_like.css">
+    <script>
+
+        $(function () {
+            $("#btn").click(function () {
+                var amount =$("#amount").val();
+                $.post(
+                    "goRecharge/proRecharge",
+                    {amount:amount},
+                    function (data) {
+                        if(data != null){
+                           alert(data);
+                           location="/goRecharge/getRecharge"
+                        }
+                    },
+                    "json"
+                );
+            });
+        })
+    </script>
+</head>
+<body>
+<form action="" method="post">
+    <h5>充值页面</h5>
+    <table>
+        <tr>
+            <td>充值</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="amount" id="amount">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="充值" id="btn">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

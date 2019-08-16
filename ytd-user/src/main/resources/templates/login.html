@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" href="../static/css/css/index_like.css">
+    <script src="../static/js/jquery-1.8.2.min.js"></script>
+</head>
+
+<script type="text/javascript">
+
+    function checkmobile(){
+        var mobile = $("[name='mobile']").val();
+        var regmobile = /^(1(([35][0-9])|(47)|[8][01236789]))\d{8}$/;
+        if (mobile == "") {
+            alert("请输入手机号");
+        } else {
+            if (!regmobile.test(mobile)) {
+                alert('手机号码输入不正确！');
+
+            }
+        }
+    }
+    function checkpasswd(){
+        var passwd = $("[name='passwd']").val();
+        if (passwd == "") {
+            alert("请输入密码");
+        }
+    }
+
+    function changeCode(){
+        var imgNode = document.getElementById("vimg");
+        //重新加载验证码，达到刷新的目的
+        imgNode.src = "AuthImageServlet?t=" + Math.random();
+        // 防止浏览器缓存的问题
+    }
+/*    function btnSub(){
+        $.post(
+            "/goLogin/login",
+            $('form').serialize(),
+            function (obj) {
+                if (obj!=null){
+                    return "list";
+                }
+                return "error";
+            },"json"
+        );
+    }*/
+</script>
+<body>
+<script color="0,0,0" opacity="0.5" count="99"
+        src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js"
+        type="text/javascript" charset="utf-8"></script>
+<form action="/goLogin/login" method="post">
+    <table>
+        <tr>
+            <td>手机号</td>
+            <td><input type="text" name="mobile" placeholder="请输入手机号" id="checkmobile"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="passwd" onblur="checkpasswd()" placeholder="请输入6-32位密码" id="passwd"><a href="#">忘记密码</a></td>
+        </tr>
+        <tr>
+            <td>验证码</td>
+            <td><input type="text" name="randomCode" placeholder="请输入图片中的验证码"/>
+                <img id="vimg"  title="点击更换" onclick="changeCode();" src="/goLogin/AuthImageServlet">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" onclick="btnSub()" value="登录">
+                <span style="margin-left: 100px">没有账号？</span><a href="/goUser/toregister">快速注册</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

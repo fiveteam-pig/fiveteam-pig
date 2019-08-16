@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的账户</title>
+    <script src="../static/css/js/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="../static/css/index_like.css">
+    <script type="text/javascript">
+         $(function () {
+             var userId=$("#userid").val();
+
+            $.post(
+                "toMyAccount",
+                {userId:userId},
+                function (obj) {
+                    alert(obj);
+                  if(obj=="1"){
+                      alert("填写注册电子账户")
+                      location="/goUserMain/toOpenCountHtml"
+
+                  }else if(obj=="0"){//已经开过户
+
+                  }else{//去注册
+                      location.href="http://localhost:9002/goUser/toregister"
+                  }
+                },
+                "json"
+
+            )
+
+        })
+
+    </script>
+
+</head>
+<center>
+    <body>
+    <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js"
+            type="text/javascript" charset="utf-8"></script>
+    <h5 style="font-size: 88px">我的账户页面</h5>
+    <!--我要做的第一件事情是判断用户有没有开通虚拟电子账户，没有提示其去开通-->
+    <!---->
+        <table style="border: 2px;border-color: red">
+
+               <input type="hidden" name="userid" id="userid" th:value="${userId}">
+
+            <tr>
+                <td>账户概要</td>
+            </tr>
+            <tr>
+                <td>回款日历</td>
+            </tr>
+            <tr>
+                <td>账户设置</td>
+            </tr>
+            <tr>
+                <td>我的资产</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/goRecharge/toRecharge">充值</a>
+                </td>
+            </tr>
+            <tr>
+                <td>提现</td>
+            </tr>
+
+        </table>
+    </body>
+</center>
+</html>

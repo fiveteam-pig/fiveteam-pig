@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ytd-base" />
+        <module name="ytd-common" />
+        <module name="ytd-eureka" />
+        <module name="ytd-openaccount" />
+        <module name="ytd-rabbitmqtest" />
+        <module name="ytd-search" />
+        <module name="ytd-sms" />
+        <module name="ytd-user" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
